@@ -93,61 +93,62 @@
 	'Compute method':
 		'prefix': 'oo_method_compute'
 		'body': """
-@api.one
-@api.depends('$1', ...)
-def _compute_field(self):
-	self.field = $2
-		"""
+			@api.multi
+			@api.depends("${10:one_field}"${20:, "${30:other_field}"}$40)
+			def _compute_${50:${10:one_field}}(self):
+				for s in self:
+					$60
+			"""
 
 	'Onchange method':
 		'prefix': 'oo_onchange_method'
 		'body': """
-@api.onchange('$1', ...)
-def onchange_field(self):
-	vals = {}
-
-	# Remove warning if necessary
-	vals['warning'] = {
-		'title': _('$2')
-		'message': _('$3')
-	}
-
-	vals['value'] = {
-		'field1': $4,
-		'field2': $5,
-	}
-
-	return vals
-		"""
+			@api.multi
+			@api.onchange("${10:one_field}"${20:, "${30:other_field}"}$40)
+			def _onchange_${50:${10:one_field}}(self):
+				${60:return {
+					"domain": {
+						"${10:one_field}": [("$70", "${80:=}", ${90:False})],$100
+					},
+				}}
+			"""
 
 	'Constrains method':
 		'prefix': 'oo_constrains_method'
 		'body': """
-@api.one
-@api.constrains('$1', ...)
-def _check_field(self):
-  if self.field == $2:
-  	raise ValidationError("$2")
-		"""
+			@api.multi
+			@api.constrains("${10:one_field}"${20:, "${30:other_field}"}$40)
+			def _check_${50:${10:one_field}}(self):
+				${60:if ${70:self.${10:one_field} == $80}:
+					raise ValidationError(_("$80"))$90}
+			"""
 
 # Complex Odoo fields
 
 	'Compute field':
 		'prefix': 'odoo_field_compute'
 		'body': """
-$1= fields.$2(string="", compute='_compute_$1', inverse='_inverse_$1', search='_search_$1')
+			${10:Char}(
+				"${20:Field string}",
+				compute='_compute_${30:field}'${40:,
+				inverse='_inverse_${30:field}'}${50:,
+				search='_search_${30:field}'}${60:,
+				help="$70"}$80)
 
-@api.one
-@api.depends('$3', ...)
-def _compute_$1(self):
-    self.$1 = ...
-
-@api.one
-def _inverse_$1(self):
-    self.$3 = ...
-
-def _search_$1(self, operator, value):
-    if operator == 'like':
-        operator = 'ilike'
-    return [('name', operator, value)]
-"""
+			@api.multi
+			@api.depends('${30:field}')
+			def _compute_${30:field}(self):
+				for s in self:
+					${90:pass}
+			${40:
+			@api.multi
+			def _inverse_${30:field}(self):
+				for s in self:
+					${100:pass}
+			}${50:
+			@api.multi
+			def _search_${30:field}(self, operator, value):
+				${110:if operator == 'like':
+					operator = 'ilike'}
+				return [('${30:field}', operator, value)]}
+			"""
