@@ -45,7 +45,7 @@
 	'Many2one Field':
 		'prefix': 'oo_field_many2one'
 		"body": '''
-			Many2one(
+			${7:new_field} = fields.Many2one(
 				"${10:res.partner}"${14:,
 				"${20:Field name}"}${24:,
 				ondelete="${30:restrict}"}${34:,
@@ -57,7 +57,7 @@
 	'One2many Field':
 		'prefix': 'oo_field_one2many'
 		"body": '''
-			One2many(
+			${7:new_field} = fields.One2many(
 				"${10:res.partner}"${14:,
 				"${20:inverse_name_id}"}${24:,
 				"${30:Field name}"}${34:,
@@ -69,7 +69,7 @@
 	'Many2many Field':
 		'prefix': 'oo_field_many2many'
 		"body": '''
-			Many2many(
+			${7:new_field} = fields.Many2many(
 				"${10:res.partner}"${14:,
 				string="${16:Field name}"}${18:,
 				relation="${20:relation_table_name}"}${24:,
