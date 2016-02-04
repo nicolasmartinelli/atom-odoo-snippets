@@ -44,15 +44,41 @@
 
 	'Many2one Field':
 		'prefix': 'oo_field_many2one'
-		'body': 'new_field_id = fields.Many2one(comodel_name="$1", string="$2", )'
+		"body": '''
+			${7:new_field} = fields.Many2one(
+				"${10:res.partner}"${14:,
+				"${20:Field name}"}${24:,
+				ondelete="${30:restrict}"}${34:,
+				domain="[('${40:field}', '${50:=}', ${60:other})]"}${64:,
+				context={"${70:key}": ${80:"value"}\\}}${84:,
+				help="${90:Explain your field}."}$100)$110
+			'''
 
 	'One2many Field':
 		'prefix': 'oo_field_one2many'
-		'body': 'new_field_ids = fields.One2many(comodel_name="$1", inverse_name="$2", string="$3", )'
+		"body": '''
+			${7:new_field} = fields.One2many(
+				"${10:res.partner}"${14:,
+				"${20:inverse_name_id}"}${24:,
+				"${30:Field name}"}${34:,
+				domain="[('${40:field}', '${50:=}', ${60:other})]"}${64:,
+				context={"${70:key}": ${80:"value"}\\}}${84:,
+				help="${90:Explain your field}."}$100)$110
+			'''
 
 	'Many2many Field':
 		'prefix': 'oo_field_many2many'
-		'body': 'new_field_ids = fields.Many2many(comodel_name="$1", relation="$2", column1="$3", column2="$4", string="$5", )'
+		"body": '''
+			${7:new_field} = fields.Many2many(
+				"${10:res.partner}"${14:,
+				string="${16:Field name}"}${18:,
+				relation="${20:relation_table_name}"}${24:,
+				column1="${30:column_this}"}${34:,
+				column2="${36:column_other}"}${38:,
+				domain="[('${40:field}', '${50:=}', ${60:other})]"}${64:,
+				context={"${70:key}": ${80:"value"}\\}}${84:,
+				help="${90:Explain your field}."}$100)$110
+			'''
 
 	'Boolean Field':
 		'prefix': 'oo_field_boolean'
