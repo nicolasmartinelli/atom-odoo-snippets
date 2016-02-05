@@ -109,7 +109,11 @@
 				${60:return {
 					"domain": {
 						"${10:one_field}": [("$70", "${80:=}", ${90:False})],$100
-					},
+					},${130:
+					"warning": {
+						"title": _("${140:The warning title}"),
+						"message": _("${150:The waning message}"),
+					},}
 				}}
 			"""
 
