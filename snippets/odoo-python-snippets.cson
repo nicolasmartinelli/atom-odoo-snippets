@@ -123,8 +123,9 @@
 			@api.multi
 			@api.constrains("${10:one_field}"${20:, "${30:other_field}"}$40)
 			def _check_${50:${10:one_field}}(self):
-				${60:if ${70:self.${10:one_field} == $80}:
-					raise ValidationError(_("$80"))$90}
+				for s in self:
+					${60:if ${70:s.${10:one_field} == $80}:
+						raise ValidationError(_("$80"))$90}
 			"""
 
 # Complex Odoo fields
