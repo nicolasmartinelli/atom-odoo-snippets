@@ -6,10 +6,10 @@
 		'prefix': 'odoo_object'
 		'body': """
 			class ${10:NewModule}(models.Model):
-				_name = '${20:module.name}'
-				_rec_name = '${30:module.rec_name}' # optional
-				_description = '${40:Module description}'
-				_order = '${50:field1}, ${60:field2}, ' # optional
+				_name = "${20:module.name}"
+				_rec_name = "${30:module.rec_name}" # optional
+				_description = "${40:Module description}"
+				_order = "${50:field1}, ${60:field2}, " # optional
 
 				name = fields.Char()$70
 		"""
@@ -18,8 +18,8 @@
 		'prefix': 'odoo_object_inherit'
 		'body': """
 			class ${10:NewModule}(models.Model):
-				_name = '${20:module.name}' # optional
-				_inherit = '${30:module.name}'
+				_name = "${20:module.name}" # optional
+				_inherit = "${30:module.name}"
 
 				name = fields.Char()$40
 		"""
