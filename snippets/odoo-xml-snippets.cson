@@ -52,6 +52,9 @@
 					<search string="$3">
 						<field name="$4"/>
 						<filter name="$5" string="$6" domain="[(\'$7\', \'=\', $8), ]"/>
+						<group string="Group By"/>
+							<filter name="$9" string="$10" domain="[]"  context="{'group_by':\'$11\'}"/>
+						<group>
 					</search>
 				</field>
 			</record>
