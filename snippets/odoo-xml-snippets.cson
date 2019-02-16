@@ -49,10 +49,10 @@
 				<field name="name">$2.search</field>
 				<field name="model">$2</field>
 				<field name="arch" type="xml">
-					<tree string="$3">
+					<search string="$3">
 						<field name="$4"/>
 						<filter name="$5" string="$6" domain="[(\'$7\', \'=\', $8), ]"/>
-					</tree>
+					</search>
 				</field>
 			</record>
 		"""
